@@ -180,10 +180,12 @@ void MainWindow::setupUI() {
     volumeLayout->addWidget(volLabel);
     volumeLayout->addWidget(volumeSlider);
 
+    musicLayout->addWidget(coverArt);
     musicLayout->addWidget(songTitle);
+    musicLayout->addWidget(songList);
+    musicLayout->addLayout(controlLayout);
     musicLayout->addWidget(progressSlider);
     musicLayout->addWidget(timeLabel);
-    musicLayout->addLayout(controlLayout);
     musicLayout->addLayout(volumeLayout);
 
     connect(btnPlay, &QPushButton::clicked, this, &MainWindow::playSelectedSong);
@@ -618,3 +620,4 @@ void MainWindow::mediaStatusChanged(QMediaPlayer::MediaStatus status)
         nextSong();
     }
 }
+
