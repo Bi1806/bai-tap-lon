@@ -38,7 +38,7 @@ bai-tap-lon/
 │   ├── users.json                       ← Giang
 │   ├── favorites.json                   ← Duy
 │
-├── image/
+├── img/
 ├── Nhac/ 
 │
 ├── UML_Class_Diagram.drawio
