@@ -7,8 +7,8 @@
 #include <QLabel>
 #include <QTimer>
 #include <QListWidget>
-#include <QMediaPlayer>
-#include <QAudioOutput>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/QAudioOutput>
 #include <QVector>
 #include <QMouseEvent>
 
@@ -72,4 +72,5 @@ private:
 
 
 #endif // MAINWINDOW_H
+
 
