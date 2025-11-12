@@ -399,7 +399,32 @@ void MainWindow::playSelectedSong()
     if (!QFile::exists(filePath)) {
         QMessageBox::warning(this, "Lỗi", "Không tìm thấy file nhạc: " + filePath);
         return;
-    }
+    // --- Hiệu ứng mờ dần khi đổi ảnh ---
+    QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect(coverArt);
+    coverArt->setGraphicsEffect(effect);
+
+    QPropertyAnimation *fade = new QPropertyAnimation(effect, "opacity");
+    fade->setDuration(400);
+    fade->setStartValue(1.0);
+    fade->setEndValue(0.0);
+
+    connect(fade, &QPropertyAnimation::finished, this, [=]() {
+        currentCover = QPixmap(coverPath).scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        coverArt->setPixmap(currentCover);
+        rotationAngle = 0;
+        rotateTimer->start(50); // 20 fps
+
+        songTitle->setText(song);
+
+        QPropertyAnimation *fadeIn = new QPropertyAnimation(effect, "opacity");
+        fadeIn->setDuration(400);
+        fadeIn->setStartValue(0.0);
+        fadeIn->setEndValue(1.0);
+        fadeIn->start(QAbstractAnimation::DeleteWhenStopped);
+    });
+
+    fade->start(QAbstractAnimation::DeleteWhenStopped);
+        
     // --- Đặt nguồn nhạc và phát ---
     player->setSource(QUrl::fromLocalFile(filePath));
     player->play();
@@ -594,5 +619,6 @@ void MainWindow::mediaStatusChanged(QMediaPlayer::MediaStatus status)
     }
 
 }
+
 
 
