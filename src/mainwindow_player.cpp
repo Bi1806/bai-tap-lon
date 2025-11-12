@@ -8,8 +8,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setupUI();
-
     player = new QMediaPlayer(this);
     audioOutput = new QAudioOutput(this);
     player->setAudioOutput(audioOutput);
@@ -48,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
 
+    setupUI();
+    
     connect(player, &QMediaPlayer::durationChanged, this, &MainWindow::durationChanged);
     connect(player, &QMediaPlayer::mediaStatusChanged, this, &MainWindow::mediaStatusChanged);
 }
@@ -517,4 +517,5 @@ void MainWindow::mediaStatusChanged(QMediaPlayer::MediaStatus status)
         rotateTimer->stop();
         nextSong();
     }
+
 }
