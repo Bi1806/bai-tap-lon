@@ -47,7 +47,10 @@ private slots:
     void fadeToPage(int index); // Hiệu ứng chuyển trang
 
 private:
+    QWidget *central;
+    QStackedWidget *stackedWidget;
 
+    QLabel *coverArt;
     QLabel *songTitle;          // Tên bài hát đang phát
     QSlider *progressSlider;    // Thanh tiến trình
     QLabel *timeLabel;          // Hiển thị thời gian phát
@@ -69,3 +72,4 @@ private:
 
 
 #endif // MAINWINDOW_H
+
