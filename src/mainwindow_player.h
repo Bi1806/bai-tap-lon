@@ -50,27 +50,27 @@ private:
     QWidget *central;
     QStackedWidget *stackedWidget;
 
+    // Player UI
     QLabel *coverArt;
-    QLabel *songTitle;          // Tên bài hát đang phát
-    QSlider *progressSlider;    // Thanh tiến trình
-    QLabel *timeLabel;          // Hiển thị thời gian phát
-    QSlider *volumeSlider;      // Thanh chỉnh âm lượng
+    QLabel *songTitle; // Tên bài hát đang phát
+    QListWidget *songList;
+    QListWidget *exploreList; // danh sách kết quả khám phá / search
+    QPushButton *btnPlay, *btnPause, *btnStop;
+    QPushButton *btnNext, *btnPrev, *btnFav;
+    QSlider *progressSlider; // Thanh tiến trình
+    QSlider *volumeSlider; // Thanh chỉnh âm lượng
+    QLabel *timeLabel; // Hiển thị thời gian phát
+    QMediaPlayer *player; // Trình phát nhạc
+    QAudioOutput *audioOutput; // Thiết bị âm thanh
+    QTimer *timer; // Đồng hồ cập nhật tiến trình
+    QWidget *profilePage;
 
-    QPushButton *btnPlay;       // Nút phát
-    QPushButton *btnPause;      // Nút tạm dừng
-    QPushButton *btnStop;       // Nút dừng
-    QPushButton *btnNext;       // Nút bài kế tiếp
-    QPushButton *btnPrev;       // Nút bài trước
+    QWidget *bottomNav;
+    QPushButton *btnTabMusic, *btnTabExplore, *btnTabProfile;
 
-    QMediaPlayer *player;       // Trình phát nhạc
-    QAudioOutput *audioOutput;  // Thiết bị âm thanh
-    QTimer *timer;              // Đồng hồ cập nhật tiến trình
-
-    QVector<QString> playlistFiles; // Danh sách file đang phát
-    int currentIndex = -1;          // Vị trí bài hát hiện tại
+    // playlist and favorites
+    QVector<QString> playlistFiles;   // Danh sách file đang phát
+    int currentIndex = -1;            // Vị trí bài hát hiện tại
 };
 
-
 #endif // MAINWINDOW_H
-
-
