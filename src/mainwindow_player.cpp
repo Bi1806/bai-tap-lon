@@ -270,6 +270,38 @@ void MainWindow::setupUI() {
     central->setLayout(mainLayout);
     setCentralWidget(central);
 }
+// ==================== CÁC CHỨC NĂNG ====================
+
+void MainWindow::fadeToPage(int index)
+{
+    QWidget *current = stackedWidget->currentWidget();
+    QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect(current);
+    current->setGraphicsEffect(effect);
+
+    QPropertyAnimation *anim = new QPropertyAnimation(effect, "opacity");
+    anim->setDuration(400);
+    anim->setStartValue(1.0);
+    anim->setEndValue(0.0);
+    anim->start(QAbstractAnimation::DeleteWhenStopped);
+
+    connect(anim, &QPropertyAnimation::finished, this, [=]() {
+        stackedWidget->setCurrentIndex(index);
+        QGraphicsOpacityEffect *newEffect = new QGraphicsOpacityEffect(stackedWidget->currentWidget());
+        stackedWidget->currentWidget()->setGraphicsEffect(newEffect);
+        QPropertyAnimation *fadeIn = new QPropertyAnimation(newEffect, "opacity");
+        fadeIn->setDuration(400);
+        fadeIn->setStartValue(0.0);
+        fadeIn->setEndValue(1.0);
+        fadeIn->start(QAbstractAnimation::DeleteWhenStopped);
+    });
+}
+
+void MainWindow::setVolume(int value)
+{
+    audioOutput->setVolume(value / 100.0);
+}
+
+// ==================== NHẠC ====================
 void MainWindow::playSelectedSong()
 {
     QListWidgetItem *item = songList->currentItem();
@@ -562,4 +594,5 @@ void MainWindow::mediaStatusChanged(QMediaPlayer::MediaStatus status)
     }
 
 }
+
 
