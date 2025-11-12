@@ -44,6 +44,7 @@ private slots:
     void durationChanged(qint64 duration); // Khi độ dài bài hát thay đổi
     void setVolume(int value); // Thay đổi âm lượng
     void setupUI(); // Giao diện chính
+    void fadeToPage(int index); // Hiệu ứng chuyển trang
 
 private:
 
@@ -65,5 +66,6 @@ private:
     QVector<QString> playlistFiles; // Danh sách file đang phát
     int currentIndex = -1;          // Vị trí bài hát hiện tại
 };
+
 
 #endif // MAINWINDOW_H
