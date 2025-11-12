@@ -617,8 +617,4 @@ void MainWindow::mediaStatusChanged(QMediaPlayer::MediaStatus status)
         rotateTimer->stop();
         nextSong();
     }
-
 }
-
-
-
