@@ -226,6 +226,49 @@ void MainWindow::setupUI() {
         QString tot = QString("%1:%2").arg(totalSec/60, 2, 10, QChar('0')).arg(totalSec%60, 2, 10, QChar('0'));
         timeLabel->setText(cur + " / " + tot);
     });
+    // Thêm hai trang vào Stack
+    profileStack->addWidget(loginPage);
+    profileStack->addWidget(profileMainPage);
+    QVBoxLayout *profileLayout = new QVBoxLayout(profilePage);
+    profileLayout->addWidget(profileStack);
+
+    // --- Stack chính ---
+    stackedWidget = new QStackedWidget;
+    stackedWidget->addWidget(musicPage);
+    stackedWidget->addWidget(exploreTab);
+    stackedWidget->addWidget(profilePage);
+
+    // --- Thanh điều hướng ---
+    bottomNav = new QWidget;
+    bottomNav->setStyleSheet("background-color: #0b0e20;");
+
+    btnTabMusic = new QPushButton("🎵 Nhạc");
+    btnTabExplore = new QPushButton("✨ Khám Phá");
+    btnTabProfile = new QPushButton("👤 Của Tui");
+
+    QHBoxLayout *navLayout = new QHBoxLayout(bottomNav);
+    navLayout->addWidget(btnTabMusic);
+    navLayout->addWidget(btnTabExplore);
+    navLayout->addWidget(btnTabProfile);
+
+    connect(btnTabMusic, &QPushButton::clicked, this, [=]() { fadeToPage(0); });
+    connect(btnTabExplore, &QPushButton::clicked, this, [=]() { fadeToPage(1); });
+    connect(btnTabProfile, &QPushButton::clicked, this, [=]() {
+        fadeToPage(2);
+        if (isLoggedIn)
+            profileStack->setCurrentWidget(profileMainPage);
+        else
+            profileStack->setCurrentWidget(loginPage);
+    });
+
+    // --- Tổng thể ---
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addWidget(stackedWidget);
+    mainLayout->addWidget(bottomNav);
+
+    central = new QWidget;
+    central->setLayout(mainLayout);
+    setCentralWidget(central);
 }
 void MainWindow::playSelectedSong()
 {
@@ -519,3 +562,4 @@ void MainWindow::mediaStatusChanged(QMediaPlayer::MediaStatus status)
     }
 
 }
+
