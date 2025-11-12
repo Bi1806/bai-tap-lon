@@ -38,9 +38,8 @@ bai-tap-lon/
 │   ├── users.json                       ← Giang
 │   ├── favorites.json                   ← Duy
 │
-├── assets/
-│   ├── icons/
-│   └── music/
+├── image/
+├── Nhac/ 
 │
 ├── UML_Class_Diagram.drawio
 └── README.md
