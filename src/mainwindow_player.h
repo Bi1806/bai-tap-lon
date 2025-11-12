@@ -71,6 +71,14 @@ private:
     // playlist and favorites
     QVector<QString> playlistFiles;   // Danh sách file đang phát
     int currentIndex = -1;            // Vị trí bài hát hiện tại
+
+    // đĩa xoay
+    QTimer *rotateTimer;
+    qreal rotationAngle = 0;
+    QPixmap currentCover;
+
+    QLineEdit *searchBox;
+
 };
 
 #endif // MAINWINDOW_H
