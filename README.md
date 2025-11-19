@@ -15,7 +15,7 @@ Dự án **Music Player** được xây dựng bằng **C++ và Qt Framework**, 
 | STT | Họ và tên | Vai trò | Công việc chính | Tỷ lệ đóng góp |
 |------|------------|----------|-----------------|----------------|
 | 1️⃣ | **[Nguyễn Trường Giang]** | Lập trình viên backend (người dùng) | Đăng nhập, đăng ký, lưu thông tin người dùng JSON, cập nhật playlist cá nhân.
-| 2️⃣ | **Huỳnh Nguyên Bổn** | Lập trình chính | Giao diện chính (`MainWindow`), phát nhạc local, xử lý Play/Pause/Next, thiết kế UI, quản lý cấu trúc project.
+| 2️⃣ | **Huỳnh Nguyên Bổn** | Lập trình viên xử lý nhạc | Giao diện chính (`MainWindow`), phát nhạc local, xử lý Play/Pause/Next, thiết kế UI, quản lý cấu trúc project.
 | 3️⃣ | **Nguyễn Lê Quốc Anh** | Lập trình viên API | Tích hợp Spotify API, gọi API tìm kiếm nhạc, phát bài trên Spotify, xử lý token.
 | 4️⃣ | **Phan Nhất Duy** | Lập trình viên UI phụ | Danh sách yêu thích, hiệu ứng giao diện, lưu yêu thích JSON, hiệu ứng chuyển trang.
 
